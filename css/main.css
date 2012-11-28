@@ -8,3 +8,7 @@
 .snippet-description {
 
 }
+
+.tpl, .template {
+    display: none;
+}

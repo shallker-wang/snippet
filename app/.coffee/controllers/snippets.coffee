@@ -21,3 +21,5 @@ class Snippets extends Spine.Controller
     @snippetCode.val('')
     @snippetDescription.val('')
     @log Snippet.all()
+
+this.Snippets = Snippets

@@ -38,4 +38,6 @@
 
   })(Spine.Controller);
 
+  this.Snippets = Snippets;
+
 }).call(this);
