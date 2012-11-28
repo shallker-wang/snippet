@@ -6,10 +6,8 @@ class SnippetApp extends Spine.Controller
 
     @routes
       "/add": ->
-        console.log "routes: /add"
         @html new SnippetCreate()
       "/list": -> 
-        console.log "routes: /list"
         SL = new SnippetList()
         @html SL
         SL.index()
@@ -19,6 +17,7 @@ class SnippetApp extends Spine.Controller
         # index.add({'snippet-name': 'from index'})
 
     Spine.Route.setup()
+    @navigate('/add')
     
     # Snippet.bind("create",  @appendOne)
     # Snippet.bind("refresh", @appendAll)

@@ -13,18 +13,17 @@
       this.el = $('#snippet-app');
       this.routes({
         "/add": function() {
-          console.log("routes: /add");
           return this.html(new SnippetCreate());
         },
         "/list": function() {
           var SL;
-          console.log("routes: /list");
           SL = new SnippetList();
           this.html(SL);
           return SL.index();
         }
       });
       Spine.Route.setup();
+      this.navigate('/add');
       this.log('SnippetApp_controller init');
     }
 
