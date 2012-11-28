@@ -6,7 +6,8 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-  <script type="text/javascript" src="js/list.min.js"></script>
+  <script type="text/javascript" src="js/list/list.min.js"></script>
+  <script type="text/javascript" src="js/list/plugin/list.fuzzySearch.min.js"></script>
   <script type="text/javascript" src="spine/spine.js"></script>
   <script type="text/javascript" src="spine/local.js"></script>
   <script type="text/javascript" src="spine/route.js"></script>
@@ -21,7 +22,9 @@
     <div class="tpl" id="tpl-snippet-add">
       <div class="row">
         <div class="span8 offset2 snippet-name">
-          <br>
+          <span class="help-block"></span>
+          <button class="btn" action="snippet-list">Snippet List</button>
+          <span class="help-block"></span>
           <input class="span8" type="text" placeholder="name">
         </div>
       </div>
@@ -37,9 +40,8 @@
       </div>
       <div class="row">
         <div class="span8 offset2">
-          <button class="btn pull-right" id="action-reset-snippet" style="margin-left: 10px">Reset</button>
-          <button class="btn pull-right" id="action-del-all" style="margin-left: 10px">Delete all</button>
-          <button class="btn pull-right" id="action-add-snippet">Add snippet</button>
+          <button class="btn pull-right" action="reset-snippet" style="margin-left: 10px">Reset</button>
+          <button class="btn pull-right" action="add-snippet">Submit</button>
         </div>
       </div>
     </div> <!-- end tpl-snippet-add -->
@@ -47,12 +49,15 @@
     <div class="tpl" id="tpl-snippet-list">
       <div class="row">
         <div class="span8 offset2">
-          <br>
+          <span class="help-block"></span>
+            <input class="snippet-search" type="text" placeholder="search snippet" action="search-snippet">
           <div class="snippet-list" id="snippet-list">
             <ul class="nav nav-tabs nav-stacked list">
               <!-- <li><a class="snippet-name">PHP</a></li> -->
             </ul>
           </div>
+          <!-- <button class="btn pull-right" action="del-snippet-all" style="margin-left: 10px">Delete all</button> -->
+          <button class="btn pull-right" action="add-snippet">Add one</button>
         </div>
       </div>
     </div> <!-- end tpl-snippet-list -->

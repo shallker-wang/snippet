@@ -17,8 +17,11 @@
           return this.html(new SnippetCreate());
         },
         "/list": function() {
+          var SL;
           console.log("routes: /list");
-          return this.html(new SnippetList());
+          SL = new SnippetList();
+          this.html(SL);
+          return SL.index();
         }
       });
       Spine.Route.setup();

@@ -15,11 +15,21 @@
 
     SnippetList.prototype.tpl = '#tpl-snippet-list';
 
+    SnippetList.prototype.indexList = '';
+
     SnippetList.prototype.elements = {
       'ul': 'list'
     };
 
+    SnippetList.prototype.events = {
+      'click [action="add-snippet"]': 'goAddSnippet',
+      'click [action="del-snippet-all"]': 'deleteAll',
+      'input [action="search-snippet"]': 'fuzzySearch'
+    };
+
     function SnippetList() {
+      this.index = __bind(this.index, this);
+
       this.appendAll = __bind(this.appendAll, this);
 
       this.appendOne = __bind(this.appendOne, this);
@@ -31,7 +41,7 @@
     }
 
     SnippetList.prototype.appendOne = function(item) {
-      return this.list.append("<li><a>" + item.name + "</a></li>");
+      return this.list.append("<li><a><span class='snippet-name'>" + item.name + "</span> - <span class='snippet-desc'>" + item.description + "</span></a></li>");
     };
 
     SnippetList.prototype.appendAll = function(items) {
@@ -42,6 +52,35 @@
         _results.push(this.appendOne(item));
       }
       return _results;
+    };
+
+    SnippetList.prototype.deleteAll = function() {
+      this.log('SnippetList.deleteAll()');
+      return this.navigate('/list');
+    };
+
+    SnippetList.prototype.index = function() {
+      var fuzzyOptions, options;
+      fuzzyOptions = {
+        searchClass: "snippet-search",
+        location: 0,
+        distance: 100,
+        threshold: 0.4,
+        multiSearch: true
+      };
+      options = {
+        valueNames: ['snippet-name', 'snippet-desc'],
+        plugins: [['fuzzySearch', fuzzyOptions]]
+      };
+      return this.indexList = new List('snippet-list', options);
+    };
+
+    SnippetList.prototype.fuzzySearch = function(ev) {
+      return this.indexList.fuzzySearch(ev.target.value);
+    };
+
+    SnippetList.prototype.goAddSnippet = function() {
+      return this.navigate('/add');
     };
 
     return SnippetList;

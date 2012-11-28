@@ -22,9 +22,9 @@
     };
 
     SnippetCreate.prototype.events = {
-      'click #action-add-snippet': 'create',
-      'click #action-reset-snippet': 'reset',
-      'click #action-del-all': 'deleteAll'
+      'click [action="add-snippet"]': 'create',
+      'click [action="reset-snippet"]': 'reset',
+      'click [action="snippet-list"]': 'goSnippetList'
     };
 
     function SnippetCreate() {
@@ -46,14 +46,14 @@
       return this.navigate('/list');
     };
 
-    SnippetCreate.prototype.deleteAll = function() {
-      return console.log('deleteAll');
-    };
-
     SnippetCreate.prototype.reset = function() {
       this.snippetName.val('');
       this.snippetCode.val('');
       return this.snippetDescription.val('');
+    };
+
+    SnippetCreate.prototype.goSnippetList = function() {
+      return this.navigate('/list');
     };
 
     return SnippetCreate;

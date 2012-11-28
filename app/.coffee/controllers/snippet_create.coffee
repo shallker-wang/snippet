@@ -11,9 +11,9 @@ class SnippetCreate extends Spine.Controller
     '.snippet-list .list': 'snippetList'
 
   events:
-    'click #action-add-snippet': 'create'
-    'click #action-reset-snippet': 'reset'
-    'click #action-del-all': 'deleteAll'
+    'click [action="add-snippet"]': 'create'
+    'click [action="reset-snippet"]': 'reset'
+    'click [action="snippet-list"]': 'goSnippetList'
 
   constructor: ->
     super
@@ -32,12 +32,11 @@ class SnippetCreate extends Spine.Controller
     @navigate('/list')
     # @reset()
 
-  deleteAll: ->
-    console.log 'deleteAll'
-
   reset: ->
     @snippetName.val('')
     @snippetCode.val('')
     @snippetDescription.val('')
+
+  goSnippetList: -> @navigate('/list')
 
 this.SnippetCreate = SnippetCreate

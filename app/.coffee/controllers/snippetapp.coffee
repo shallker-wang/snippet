@@ -10,7 +10,13 @@ class SnippetApp extends Spine.Controller
         @html new SnippetCreate()
       "/list": -> 
         console.log "routes: /list"
-        @html new SnippetList()
+        SL = new SnippetList()
+        @html SL
+        SL.index()
+        # options =
+        #   valueNames: ['snippet-name']
+        # index = new List('snippet-list', options)
+        # index.add({'snippet-name': 'from index'})
 
     Spine.Route.setup()
     
