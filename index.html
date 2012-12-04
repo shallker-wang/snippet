@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="js/doT.js"></script>
   <script type="text/javascript" src="js/list/list.min.js"></script>
   <script type="text/javascript" src="js/list/plugin/list.fuzzySearch.min.js"></script>
   <script type="text/javascript" src="spine/spine.js"></script>
@@ -53,7 +54,9 @@
             <input class="snippet-search" type="text" placeholder="search snippet" action="search-snippet">
           <div class="snippet-list" id="snippet-list">
             <ul class="nav nav-tabs nav-stacked list">
-              <!-- <li><a class="snippet-name">PHP</a></li> -->
+              {{~it :snippet:i}}
+                <li><a class="snippet-name">{{=snippet.name}} - {{=snippet.description}}</a></li>
+              {{~}}
             </ul>
           </div>
           <!-- <button class="btn pull-right" action="del-snippet-all" style="margin-left: 10px">Delete all</button> -->

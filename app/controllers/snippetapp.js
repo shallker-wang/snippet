@@ -23,7 +23,6 @@
         }
       });
       Spine.Route.setup();
-      this.navigate('/add');
       this.log('SnippetApp_controller init');
     }
 

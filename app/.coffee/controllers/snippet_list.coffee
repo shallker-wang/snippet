@@ -17,18 +17,16 @@ class SnippetList extends Spine.Controller
   constructor: ->
     super
     
-    @el.append($(@tpl).clone().html())
-    @refreshElements()
-
-    Snippet.bind("refresh", @appendAll)
+    Snippet.bind("refresh", @render)
     Snippet.fetch()
     # @index()
 
-  appendOne: (item) =>
-    @list.append("<li><a><span class='snippet-name'>#{item.name}</span> - <span class='snippet-desc'>#{item.description}</span></a></li>")
+  render: (data) =>
+    @el.append @doT $(@tpl).html(), data
 
-  appendAll: (items) =>
-    @appendOne(item) for item in items
+  doT: (tpl, data) ->
+    render = doT.template tpl
+    render data
 
   deleteAll: ->
     @log 'SnippetList.deleteAll()'

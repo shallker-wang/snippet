@@ -17,7 +17,7 @@ class SnippetApp extends Spine.Controller
         # index.add({'snippet-name': 'from index'})
 
     Spine.Route.setup()
-    @navigate('/add')
+    # @navigate('/add')
     
     # Snippet.bind("create",  @appendOne)
     # Snippet.bind("refresh", @appendAll)

@@ -30,28 +30,20 @@
     function SnippetList() {
       this.index = __bind(this.index, this);
 
-      this.appendAll = __bind(this.appendAll, this);
-
-      this.appendOne = __bind(this.appendOne, this);
+      this.render = __bind(this.render, this);
       SnippetList.__super__.constructor.apply(this, arguments);
-      this.el.append($(this.tpl).clone().html());
-      this.refreshElements();
-      Snippet.bind("refresh", this.appendAll);
+      Snippet.bind("refresh", this.render);
       Snippet.fetch();
     }
 
-    SnippetList.prototype.appendOne = function(item) {
-      return this.list.append("<li><a><span class='snippet-name'>" + item.name + "</span> - <span class='snippet-desc'>" + item.description + "</span></a></li>");
+    SnippetList.prototype.render = function(data) {
+      return this.el.append(this.doT($(this.tpl).html(), data));
     };
 
-    SnippetList.prototype.appendAll = function(items) {
-      var item, _i, _len, _results;
-      _results = [];
-      for (_i = 0, _len = items.length; _i < _len; _i++) {
-        item = items[_i];
-        _results.push(this.appendOne(item));
-      }
-      return _results;
+    SnippetList.prototype.doT = function(tpl, data) {
+      var render;
+      render = doT.template(tpl);
+      return render(data);
     };
 
     SnippetList.prototype.deleteAll = function() {
