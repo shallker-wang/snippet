@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="span8 offset2 snippet-name">
+    <span class="help-block"></span>
+    <button class="btn" action="snippet-list">Snippet List</button>
+    <span class="help-block"></span>
+    <input class="span8" type="text" placeholder="name">
+  </div>
+</div>
+<div class="row snippet-code">
+  <div class="span8 offset2">
+    <textarea class="span8" rows="10" placeholder="code here"></textarea>
+  </div>
+</div>
+<div class="row snippet-description">
+  <div class="span8 offset2">
+    <input class="span8" type="text" placeholder="description">
+  </div>
+</div>
+<div class="row">
+  <div class="span8 offset2">
+    <button class="btn pull-right" action="reset-snippet" style="margin-left: 10px">Reset</button>
+    <button class="btn pull-right" action="add-snippet">Submit</button>
+  </div>
+</div>
+<!-- end tpl-snippet-add -->

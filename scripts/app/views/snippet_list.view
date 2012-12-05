@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="span8 offset2">
+    <span class="help-block"></span>
+      <input class="snippet-search" type="search" placeholder="search snippet" action="search-snippet">
+    <div class="snippet-list" id="snippet-list">
+      <ul class="nav nav-tabs nav-stacked list">
+        {{~it :snippet:i}}
+          <li><a class="snippet-name" href="#/edit/{{=snippet.id}}">{{=snippet.name}} - {{=snippet.description}}</a></li>
+        {{~}}
+      </ul>
+    </div>
+    <!-- <button class="btn pull-right" action="del-snippet-all" style="margin-left: 10px">Delete all</button> -->
+    <button class="btn pull-right" action="add-snippet">Add one</button>
+  </div>
+</div>
+<!-- end tpl-snippet-list -->
