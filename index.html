@@ -5,76 +5,36 @@
   <title>Snippet</title>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-  <script type="text/javascript" src="js/doT.js"></script>
-  <script type="text/javascript" src="js/list/list.min.js"></script>
-  <script type="text/javascript" src="js/list/plugin/list.fuzzySearch.min.js"></script>
-  <script type="text/javascript" src="spine/spine.js"></script>
-  <script type="text/javascript" src="spine/local.js"></script>
-  <script type="text/javascript" src="spine/route.js"></script>
-  <script type="text/javascript" src="app/models/snippet.js"></script>
-  <script type="text/javascript" src="app/controllers/snippets.js"></script>
-  <script type="text/javascript" src="app/controllers/snippet_create.js"></script>
-  <script type="text/javascript" src="app/controllers/snippet_list.js"></script>
-  <script type="text/javascript" src="app/controllers/snippetapp.js"></script>
+  <script type="text/javascript" src="scripts/js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="scripts/js/jquery.autosize.js"></script>
+  <script type="text/javascript" src="scripts/js/list/list.min.js"></script>
+  <script type="text/javascript" src="scripts/js/list/plugin/list.fuzzySearch.min.js"></script>
+  <script type="text/javascript" src="scripts/js/ace/src-noconflict/ace.js"></script>
+  <script type="text/javascript" src="scripts/js/doT.js"></script>
+  <script type="text/javascript" src="scripts/spine/spine.js"></script>
+  <script type="text/javascript" src="scripts/spine/local.js"></script>
+  <script type="text/javascript" src="scripts/spine/route.js"></script>
+  <script type="text/javascript" src="scripts/app/models/snippet.js"></script>
+  <script type="text/javascript" src="scripts/app/controllers/spine.controller.xhr.js"></script>
+  <script type="text/javascript" src="scripts/app/controllers/snippets.js"></script>
+  <script type="text/javascript" src="scripts/app/controllers/snippet_create.js"></script>
+  <script type="text/javascript" src="scripts/app/controllers/snippet_list.js"></script>
+  <script type="text/javascript" src="scripts/app/controllers/snippet_edit.js"></script>
+  <script type="text/javascript" src="scripts/app/controllers/snippetapp.js"></script>
 </head>
 <body>
-  <div class="container snippet-app" id="snippet-app">
-    <div class="tpl" id="tpl-snippet-add">
-      <div class="row">
-        <div class="span8 offset2 snippet-name">
-          <span class="help-block"></span>
-          <button class="btn" action="snippet-list">Snippet List</button>
-          <span class="help-block"></span>
-          <input class="span8" type="text" placeholder="name">
-        </div>
+  <div class="container-fluid snippet-app">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Snippet</a>
+        <ul class="nav">
+          <li><a href="/#/add">Create</a></li>
+          <li><a href="/#/list">List</a></li>
+        </ul>
       </div>
-      <div class="row snippet-code">
-        <div class="span8 offset2">
-          <textarea class="span8" placeholder="code here"></textarea>
-        </div>
-      </div>
-      <div class="row snippet-description">
-        <div class="span8 offset2">
-          <input class="span8" type="text" placeholder="description">
-        </div>
-      </div>
-      <div class="row">
-        <div class="span8 offset2">
-          <button class="btn pull-right" action="reset-snippet" style="margin-left: 10px">Reset</button>
-          <button class="btn pull-right" action="add-snippet">Submit</button>
-        </div>
-      </div>
-    </div> <!-- end tpl-snippet-add -->
-
-    <div class="tpl" id="tpl-snippet-list">
-      <div class="row">
-        <div class="span8 offset2">
-          <span class="help-block"></span>
-            <input class="snippet-search" type="text" placeholder="search snippet" action="search-snippet">
-          <div class="snippet-list" id="snippet-list">
-            <ul class="nav nav-tabs nav-stacked list">
-              {{~it :snippet:i}}
-                <li><a class="snippet-name">{{=snippet.name}} - {{=snippet.description}}</a></li>
-              {{~}}
-            </ul>
-          </div>
-          <!-- <button class="btn pull-right" action="del-snippet-all" style="margin-left: 10px">Delete all</button> -->
-          <button class="btn pull-right" action="add-snippet">Add one</button>
-        </div>
-      </div>
-    </div> <!-- end tpl-snippet-list -->
+    </div>
+    <div class="content" id="snippet-app">
+    </div>
   </div> <!-- end container -->
-
-  <script type="text/javascript">
-    var tpls = document.getElementsByClassName('tpl');
-    var eles = []
-    for (var i=0; i < tpls.length; i++) {
-      eles.push(tpls[i])
-    }
-    for (var i in eles) {
-      document.body.appendChild(eles[i]);
-    }
-  </script>
 </body>
 </html>
