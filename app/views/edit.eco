@@ -1,0 +1,15 @@
+<div class="row-fluid">
+  <div class="span12">
+    <button class="btn pull-right" id="a-save">Save</button>
+    <br>
+  </div>
+</div>
+<div class="row-fluid">
+    <div class="span6">
+        <textarea rows="2" id="snippet-annotation">{{=it.annotation}}</textarea>
+    </div>
+    <div class="span6">
+        <div class="span6" id="ace-editor">{{=it.code}}</div>
+    </div>
+</div>
+<!-- end tpl-snippet-edit -->

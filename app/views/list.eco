@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="span8 offset2">
+    <span class="help-block"></span>
+      <input id="snippet-search" class="snippet-search" type="search" placeholder="search snippet">
+      <div id="snippet-list">
+        <ul class="nav nav-tabs nav-stacked list">
+          {{~it :sp:i}}
+            <li id="{{=sp.id}}"><a href="#"><span class="snippet-name">{{=sp.name}}</span> - <span class="snippet-desc">{{=sp.description}}</span></a></li>
+          {{~}}
+        </ul>
+      </div>
+    <button class="btn pull-right" id="a-del-all" style="margin-left: 10px">Delete all</button>
+    <button class="btn pull-right" id="a-add">Add one</button>
+  </div>
+</div>
+<!-- end tpl-snippet-list -->
