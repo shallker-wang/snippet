@@ -1,8 +1,8 @@
 <div class="navbar-inner">
   <a class="brand" href="#">Snippet</a>
   <ul class="nav">
-    <li class="nav-create"><a href="#">Create</a></li>
     <li class="nav-list"><a href="#">List</a></li>
+    <li class="nav-create"><a href="#">Create</a></li>
   </ul>
 </div>
 <!-- end-navbar-tpl -->

@@ -7,42 +7,52 @@ require('lib/jquery/plugin/jquery.autosize')
 
 class SnippetsEdit extends Spine.Controller
 
+  view: require('views/edit')()
+
   elements:
-    '#snippet-annotation': 'annotation'
+    '#snippet-name': 'name'
+    '#snippet-description': 'description'
 
   events:
-    'click #a-save': 'save'
+    'click #a-update': 'update'
+    'click #a-delete': 'delete'
 
-  constructor: (snippetId) ->
+  constructor: ->
     super
-    @html 
-    @id = snippetId
     Snippet.fetch()
-    # @el.append @render()
-    # @refreshElements()
-    @tpl = require('views/edit')()
-    @snippet = Snippet.find @id
-    @html @render @tpl, @snippet
+    @html @render @load()
+    @live()
 
-  render: (tpl, data) ->
-    render = doT.template tpl
+  load: ->
+    @snippet = Snippet.find @id
+    @snippet
+
+  render: (data) ->
+    render = doT.template @view
     render data
 
-  save: (ev) ->
+  update: (ev) ->
     @snippet.updateAttributes
-      annotation: @annotation.val()
+      name: @name.val()
       code: @editor.getSession().getValue()
-    # @snippet.save()
+      description: @description.val()
+    @navList()
 
-  afterDOM: ->
+  delete: (ev) ->
+    @snippet.destroy()
+    @navList()
+
+  live: ->
     @editor = ace.edit("ace-editor")
     @editor.getSession().setMode("ace/mode/typescript")
 
     # eleEditor = document.getElementById('ace-editor')
-    height = @editor.getSession().getDocument().getLength() *
-      @editor.renderer.lineHeight + @editor.renderer.scrollBar.getWidth();
-    $('#ace-editor').height(height)
+    # height = @editor.getSession().getDocument().getLength() *
+    #   @editor.renderer.lineHeight + @editor.renderer.scrollBar.getWidth();
+    # $('#ace-editor').height(height)
 
-    $('#snippet-annotation').autosize();
+    # $('#snippet-annotation').autosize();
+
+  navList: -> @navigate '/list'
 
 module.exports = SnippetsEdit

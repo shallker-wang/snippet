@@ -7,15 +7,17 @@ Edit = require('controllers/snippets.edit')
 
 class SnippetsContainer extends Spine.Controller
   
-  className: 'container-fluid'
+  className: 'container'
 
   constructor: ->
     super
-
     @routes
+      '/': (para) ->
+        @list = new List
+        @html @list
+
       '/create': (para) -> 
-        @create = new Create
-        @html @create
+        @create = new Create el: @el
 
       '/list': (para) ->
         @list = new List
@@ -23,8 +25,6 @@ class SnippetsContainer extends Spine.Controller
         @list.index()
 
       '/edit/:id': (para) ->
-        @edit = new Edit(para.id)
-        @html @edit
-        @edit.afterDOM()
-        
+        @edit = new Edit el: @el, id: para.id
+
 module.exports = SnippetsContainer

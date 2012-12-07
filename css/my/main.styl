@@ -2,13 +2,29 @@
 	min-height: 100px;
 }
 
-/* hide ACE editor's scrollbar */
-#ace-editor .ace_scrollbar {
-    display: none;
+#snippet-list ul {
+    list-style: none;
+    margin-left: 0;
 }
 
 #ace-editor {
     min-height: 200px;
+    width: 100%;
+    position: relative;
+}
+
+#ace-editor.editor-read {
+    margin-left: 20px;
+    height: 300px;
+}
+
+/* hide ACE editor's scrollbar */
+#ace-editor.editor-read .ace_scrollbar {
+    display: none;
+}
+
+#ace-editor.editor-edit {
+    height: 400px;
 }
 
 #snippet-annotation{
@@ -17,12 +33,12 @@
     max-width: 100%;
     width: 100%;
     height: 100%;
-    border: 0;
-    border-style: none;
     overflow: hidden;
     text-align: right;
+    border: 0;
+    border-stlyle: none;
 }
 
 #snippet-annotation:focus {
-    box-shadow: none;
+    /* box-shadow: none; */
 }

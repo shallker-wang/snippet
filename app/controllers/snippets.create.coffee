@@ -6,35 +6,39 @@ doT = require('lib/dot/doT')
 
 class SnippetsCreate extends Spine.Controller
 
+  view: require('views/create')()
+
   elements:
     '#snippet-name': 'name'
-    '#snippet-code': 'code'
     '#snippet-description': 'description'
 
   events:
-    'click #a-create': 'create'
-    'click #a-reset': 'reset'
-    'click #a-list': 'list'
+    'click #a-save': 'save'
+    'click #a-list': 'navList'
 
   constructor: ->
     super
-    @html require('views/create')()
+    Snippet.fetch()
+    @html @render()
+    @live()
 
-  create: ->
+  render: ->
+    @view
+
+  live: ->
+    @editor = ace.edit("ace-editor")
+    @editor.getSession().setMode("ace/mode/typescript")
+
+  save: ->
     now = new Date()
     Snippet.create
       name: @name.val()
-      code: @code.val()
+      code: @editor.getSession().getValue()
       description: @description.val()
       annotation: "\n\r"
       timestamp: now.getTime()
-    @list()
+    @navList()
 
-  reset: ->
-    @name.val('')
-    @code.val('')
-    @description.val('')
-
-  list: -> @navigate '/list'
+  navList: -> @navigate '/list'
 
 module.exports = SnippetsCreate

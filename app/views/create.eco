@@ -1,25 +1,17 @@
 <div class="row">
-  <div class="span8 offset2">
-    <span class="help-block"></span>
-    <button class="btn" id="a-list">Snippet List</button>
-    <span class="help-block"></span>
-    <input class="span8" id="snippet-name" type="text" placeholder="name">
+  <div class="span12">
+    <input type="text" placeholder="Snippet name" id="snippet-name" tabIndex="1">
+    <button class="btn pull-right" id="a-save" tabIndex="4">Save</button>
   </div>
 </div>
 <div class="row">
-  <div class="span8 offset2">
-    <textarea class="span8" id="snippet-code" rows="10" placeholder="code here"></textarea>
+  <div class="span12">
+    <input class="span12" type="text" placeholder="Snippet description" id="snippet-description" tabIndex="2">
   </div>
 </div>
 <div class="row">
-  <div class="span8 offset2">
-    <input class="span8" id="snippet-description" type="text" placeholder="description">
-  </div>
+    <div class="span12">
+        <div class="editor-edit" id="ace-editor" tabIndex="3">// Snippet code in here.</div>
+    </div>
 </div>
-<div class="row">
-  <div class="span8 offset2">
-    <button class="btn pull-right" id="a-reset" style="margin-left: 10px">Reset</button>
-    <button class="btn pull-right" id="a-create">Create</button>
-  </div>
-</div>
-<!-- end tpl-snippet-add -->
+<!-- end tpl-snippet-create -->

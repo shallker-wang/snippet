@@ -9,28 +9,27 @@ require('lib/list/plugin/list.fuzzySearch.min')
 
 class SnippetsList extends Spine.Controller
 
+  view: require('views/list')()
+
   elements:
     '#snippet-list': 'list'
 
   events:
-    'click #a-add': 'add'
-    'click #a-del-all': 'delAll'
+    'click #a-add': 'navAdd'
     'click #snippet-list li': 'edit'
     'input #snippet-search': 'fuzzySearch'
 
   constructor: ->
     super
-    Snippet.bind("refresh", @build)
+    
     Snippet.fetch()
-    # @index()
+    @html @render @load()
 
-  build: (snippets) =>
-    @tpl = require('views/list')()
-    @snippets = snippets
-    @html @render @tpl, @snippets
+  load: ->
+    Snippet.all()
 
-  render: (tpl, data) ->
-    render = doT.template tpl
+  render: (data) ->
+    render = doT.template @view
     render data
 
   index: =>
@@ -56,9 +55,6 @@ class SnippetsList extends Spine.Controller
     id = ev.currentTarget.id
     @navigate "/edit/#{id}"
 
-  add: -> @navigate '/create'
+  navAdd: -> @navigate '/create'
   
-  delAll: ->
-    @log 'delete all'
-
 module.exports = SnippetsList
