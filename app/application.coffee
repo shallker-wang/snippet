@@ -1,7 +1,7 @@
 require('lib/setup')
 
 Spine = require('spine')
-Navbar = require('controllers/snippets.navbar')
+# Navbar = require('controllers/snippets.navbar')
 Container = require('controllers/snippets.container')
 
 class App extends Spine.Controller
@@ -9,9 +9,9 @@ class App extends Spine.Controller
   constructor: ->
     super
 
-    @navbar = new Navbar
+    # @navbar = new Navbar
     @container = new Container
-    @append @navbar, @container
+    @append @container
     
     Spine.Route.setup()
 
