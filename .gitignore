@@ -1,6 +1,6 @@
 # Hem
-# node_modules/
-# node_modules/*
+node_modules/
+node_modules/*
 
 #################
 ## Eclipse 2
