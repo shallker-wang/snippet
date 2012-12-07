@@ -18,11 +18,11 @@ class SnippetsDoc extends Spine.Controller
     'click #a-update': 'update'
     'click #a-back': 'navEdit'
 
-  constructor: ->
+  constructor: (id) ->
     super
+    @id = id
     Snippet.fetch()
     @html @render @load()
-    @live()
 
   load: ->
     @snippet = Snippet.find @id
@@ -37,6 +37,10 @@ class SnippetsDoc extends Spine.Controller
       doc: @doc.val()
       code: @editor.getSession().getValue()
     )
+    @success('Update successful.')
+
+  success: (mesg) ->
+    alert mesg
 
   live: ->
     @editor = ace.edit("ace-editor")

@@ -19,7 +19,9 @@ class SnippetsContainer extends Spine.Controller
         @html @list
 
       '/create': (para) -> 
-        @create = new Create el: @el
+        @create = new Create
+        @html @create
+        @create.live()
 
       '/list': (para) ->
         @list = new List
@@ -27,12 +29,13 @@ class SnippetsContainer extends Spine.Controller
         @list.index()
 
       '/edit/:id': (para) ->
-        @edit = new Edit el: @el, id: para.id
+        @edit = new Edit(para.id)
+        @html @edit
+        @edit.live()
 
       '/doc/:id': (para) ->
-        @doc = new Doc el: @el, id: para.id
-
-    Snippet.bind "error", (rec, msg) ->
-      alert("Sorry, " + msg)
+        @doc = new Doc(para.id)
+        @html @doc
+        @doc.live()
 
 module.exports = SnippetsContainer

@@ -20,7 +20,6 @@ class SnippetsCreate extends Spine.Controller
     super
     Snippet.fetch()
     @html @render()
-    @live()
 
   render: ->
     @view
@@ -30,6 +29,7 @@ class SnippetsCreate extends Spine.Controller
     @editor.getSession().setMode("ace/mode/typescript")
 
   save: ->
+    return alert 'Snippet name is required.' unless @name.val()
     now = new Date()
     return unless Snippet.create (
       name: @name.val()

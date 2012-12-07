@@ -17,11 +17,11 @@ class SnippetsEdit extends Spine.Controller
     'click #a-delete': 'delete'
     'click #a-document': 'navDoc'
 
-  constructor: ->
+  constructor: (id) ->
     super
+    @id = id
     Snippet.fetch()
     @html @render @load()
-    @live()
 
   load: ->
     @snippet = Snippet.find @id
@@ -37,9 +37,10 @@ class SnippetsEdit extends Spine.Controller
       code: @editor.getSession().getValue()
       description: @description.val()
     )
-    @success('Update sucess.')
+    @success('Update sucessful.')
 
   success: (mesg) ->
+    alert mesg
 
   delete: (ev) ->
     @snippet.destroy()
