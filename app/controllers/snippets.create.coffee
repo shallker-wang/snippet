@@ -31,12 +31,13 @@ class SnippetsCreate extends Spine.Controller
 
   save: ->
     now = new Date()
-    Snippet.create
+    return unless Snippet.create (
       name: @name.val()
       code: @editor.getSession().getValue()
+      doc: ''
       description: @description.val()
-      annotation: "\n\r"
       timestamp: now.getTime()
+    )
     @navList()
 
   navList: -> @navigate '/list'

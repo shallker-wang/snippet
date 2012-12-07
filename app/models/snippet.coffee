@@ -1,7 +1,7 @@
 Spine = require('spine')
 
 class Snippet extends Spine.Model
-  @configure 'Snippet', 'name', 'code', 'description', 'annotation', 'timestamp'
+  @configure 'Snippet', 'name', 'code', 'description', 'doc', 'timestamp'
   
   @extend Spine.Model.Local
   
@@ -11,5 +11,9 @@ class Snippet extends Spine.Model
     @select (item) ->
       item.name?.toLowerCase().indexOf(query) isnt -1 or
         item.email?.toLowerCase().indexOf(query) isnt -1
-        
+
+  validate: ->
+    unless @name
+      "snippet name is required"
+
 module.exports = Snippet

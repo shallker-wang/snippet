@@ -4,18 +4,19 @@ $       = Spine.$
 Snippet = require('models/snippet')
 doT = require('lib/dot/doT')
 
-class SnippetsEdit extends Spine.Controller
+require('lib/jquery/plugin/jquery.autosize')
 
-  view: require('views/edit')()
+class SnippetsDoc extends Spine.Controller
+
+  view: require('views/doc')()
 
   elements:
-    '#snippet-name': 'name'
-    '#snippet-description': 'description'
+    '#snippet-doc': 'doc'
+    '#snippet-code': 'code'
 
   events:
     'click #a-update': 'update'
-    'click #a-delete': 'delete'
-    'click #a-document': 'navDoc'
+    'click #a-back': 'navEdit'
 
   constructor: ->
     super
@@ -33,23 +34,21 @@ class SnippetsEdit extends Spine.Controller
 
   update: (ev) ->
     return unless @snippet.updateAttributes(
-      name: @name.val()
+      doc: @doc.val()
       code: @editor.getSession().getValue()
-      description: @description.val()
     )
-    @success('Update sucess.')
-
-  success: (mesg) ->
-
-  delete: (ev) ->
-    @snippet.destroy()
-    @navList()
 
   live: ->
     @editor = ace.edit("ace-editor")
     @editor.getSession().setMode("ace/mode/typescript")
 
-  navList: -> @navigate '/list'
-  navDoc: -> @navigate "/doc/#{@id}"
+    height = @editor.getSession().getDocument().getLength() *
+      @editor.renderer.lineHeight + @editor.renderer.scrollBar.getWidth();
+    $('#ace-editor').height(height)
 
-module.exports = SnippetsEdit
+    $('#snippet-doc').autosize();
+
+  navList: -> @navigate '/list'
+  navEdit: (ev) -> @navigate "/edit/#{@snippet.id}"
+
+module.exports = SnippetsDoc

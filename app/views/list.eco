@@ -3,7 +3,7 @@
       <input id="snippet-search" class="span4 snippet-search" type="search" placeholder="search snippet">
   </div>
   <div class="span4">
-      <button class="btn pull-right" id="a-add">Add one</button>
+      <button class="btn pull-right" id="a-add"><i class="icon-plus"></i> Add one</button>
   </div>
 </div>
 <div class="row">
